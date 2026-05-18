@@ -149,7 +149,7 @@ void drawFlagpole(float flagX, float flagY)
     float poleTop = flagY + FLAG_H + 0.15f;
 
     float poleRadius = 0.03f;
-
+       // Pole color
     setColor(70, 74, 77);
 
     glBegin(GL_QUADS);
