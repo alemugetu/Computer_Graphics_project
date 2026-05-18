@@ -24,8 +24,9 @@ void setColor(int r, int g, int b)
 }
 void drawStar(float x, float y, float r)
 {
-    const float inner = r * 0.382f;
+   
     const float startAngle = (float)(M_PI / 2.0);
+     const float inner = r * 0.382f;
 
     glBegin(GL_TRIANGLE_FAN);
 
