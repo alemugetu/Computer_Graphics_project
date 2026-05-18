@@ -22,7 +22,31 @@ void setColor(int r, int g, int b)
 {
     glColor3f(r / 255.f, g / 255.f, b / 255.f);
 }
+void drawStar(float x, float y, float r)
+{
+    const float inner = r * 0.382f;
+    const float startAngle = (float)(M_PI / 2.0);
 
+    glBegin(GL_TRIANGLE_FAN);
+
+    glVertex2f(x, y);
+
+    for (int i = 0; i <= 10; ++i)
+    {
+        float angle = startAngle - i * (float)(M_PI / 5.0);
+
+        float radius = (i % 2 == 0)
+            ? r
+            : inner;
+
+        glVertex2f(
+            x + radius * cosf(angle),
+            y + radius * sinf(angle)
+        );
+    }
+
+    glEnd();
+}
 void drawWaveQuadStrip(float x0, float x1, float yBot, float yTop)
 {
     float dx = (x1 - x0) / WAVE_COLS;
