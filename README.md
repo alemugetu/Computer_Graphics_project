@@ -82,6 +82,9 @@ g++ meta_logo/meta_logo_filled.cpp -o meta_logo -lGL -lGLU -lglut
 # Run
 ./meta_logo
 ```
+Meta logo's Image
+<img width="895" height="773" alt="image" src="https://github.com/user-attachments/assets/5cffd67f-d391-4351-a144-d688d5b4639b" />
+
 
 ### Animated US Flag
 
@@ -92,6 +95,9 @@ g++ us_flag/us_flag.cpp -o us_flag -lGL -lGLU -lglut
 # Run
 ./us_flag
 ```
+Flag's Image 
+<img width="751" height="474" alt="image" src="https://github.com/user-attachments/assets/5ec3e888-acd0-44c1-9aae-5118f2d67b49" />
+
 
 > **Windows note:** Replace `-lGL -lGLU -lglut` with `-lopengl32 -lglu32 -lfreeglut` and ensure `freeglut.dll` is in the same folder as the executable.
 
@@ -106,7 +112,7 @@ g++ us_flag/us_flag.cpp -o us_flag -lGL -lGLU -lglut
 | Dagmawit Mesfn  | 02065/16   | Meta Bézier Curves          |
 | Abel Mulu       | 01825/16   | Star Geometry               |
 | Nepthalem Ayele | 00363/16   | Flagpole + Color Correction |
-| Helen Brhanu    | 01955/16   | Wave animation              |
+| Helen Birhan    | 01955/16   | Wave animation              |
 
 > Each member commits their own work directly to this repository. See the **Commits** tab for individual contribution history.
 
