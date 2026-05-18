@@ -8,6 +8,11 @@
 const float FLAG_W = 1.9f;
 const float FLAG_H = 1.0f;
 
+const int WIN_W = 1000;
+const int WIN_H = 600;
+
+const float OX = 2.5f;
+const float OY = 1.5f;
 
 const int WAVE_COLS = 80;
 
