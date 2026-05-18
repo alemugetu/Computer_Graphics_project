@@ -79,6 +79,61 @@ void drawWaveQuadStrip(float x0, float x1, float yBot, float yTop)
     glEnd();
 }
 
+void drawAnimatedBorder()
+{
+    const float x0 = 0.f;
+    const float x1 = FLAG_W;
+
+    const float y0 = 0.f;
+    const float y1 = FLAG_H;
+
+    const int N = WAVE_COLS;
+    const float dx = (x1 - x0) / N;
+
+    glColor3f(0.f, 0.f, 0.f);
+    glLineWidth(1.8f);
+
+    glBegin(GL_LINE_STRIP);
+
+    for (int i = 0; i <= N; ++i)
+    {
+        float x = x0 + i * dx;
+        glVertex2f(x, y0 + waveY(x));
+    }
+
+    glEnd();
+
+    glBegin(GL_LINE_STRIP);
+
+    for (int i = 0; i <= N; ++i)
+    {
+        float x = x0 + i * dx;
+        glVertex2f(x, y1 + waveY(x));
+    }
+
+    glEnd();
+
+    glBegin(GL_LINE_STRIP);
+
+    for (int i = 0; i <= N; ++i)
+    {
+        float y = y0 + i * (y1 - y0) / N;
+        glVertex2f(x0, y + waveY(x0));
+    }
+
+    glEnd();
+
+    glBegin(GL_LINE_STRIP);
+
+    for (int i = 0; i <= N; ++i)
+    {
+        float y = y0 + i * (y1 - y0) / N;
+        glVertex2f(x1, y + waveY(x1));
+    }
+
+    glEnd();
+}
+
 void drawFlagpole(float flagX, float flagY)
 {
     float poleX = flagX - 0.08f;
