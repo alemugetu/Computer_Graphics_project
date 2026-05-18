@@ -89,9 +89,9 @@ void drawUSFlag()
     for (int i = 0; i < 13; ++i)
     {
         if (i % 2 == 0)
-            setColor(191, 10, 48);
+            setColor(191, 10, 48); // Red
         else
-            setColor(255, 255, 255);
+            setColor(255, 255, 255); // White
 
         drawWaveQuadStrip(
             0.f,
