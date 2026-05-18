@@ -202,18 +202,6 @@ void display()
     glutSwapBuffers();
 }
 
-
-inline float waveY(float x)
-{
-    float t = x / FLAG_W;
-
-    return WAVE_AMP *
-           sinf(
-               wavePhase +
-               t * 2.f * (float)M_PI * WAVE_FREQ
-           );
-}
-
 void timer(int)
 {
     wavePhase -= 0.07f;
