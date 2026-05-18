@@ -8,6 +8,16 @@
 const float FLAG_W = 1.9f;
 const float FLAG_H = 1.0f;
 
+
+const int WAVE_COLS = 80;
+
+const float WAVE_AMP = FLAG_H * 0.034f;
+const float WAVE_FREQ = 2.5f;
+
+float wavePhase = 0.0f;
+
+
+
 void setColor(int r, int g, int b)
 {
     glColor3f(r / 255.f, g / 255.f, b / 255.f);
@@ -159,6 +169,28 @@ void display()
 
     glutSwapBuffers();
 }
+
+
+inline float waveY(float x)
+{
+    float t = x / FLAG_W;
+
+    return WAVE_AMP *
+           sinf(
+               wavePhase +
+               t * 2.f * (float)M_PI * WAVE_FREQ
+           );
+}
+
+void timer(int)
+{
+    wavePhase -= 0.07f;
+
+    glutPostRedisplay();
+
+    glutTimerFunc(16, timer, 0);
+}
+
 
 int main(int argc, char **argv)
 {
