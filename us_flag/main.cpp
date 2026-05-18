@@ -79,6 +79,49 @@ void drawWaveQuadStrip(float x0, float x1, float yBot, float yTop)
     glEnd();
 }
 
+void drawFlagpole(float flagX, float flagY)
+{
+    float poleX = flagX - 0.08f;
+
+    float poleBottom = flagY - 1.0f;
+    float poleTop = flagY + FLAG_H + 0.15f;
+
+    float poleRadius = 0.03f;
+
+    setColor(70, 74, 77);
+
+    glBegin(GL_QUADS);
+
+    glVertex2f(poleX - poleRadius, poleBottom);
+    glVertex2f(poleX + poleRadius, poleBottom);
+    glVertex2f(poleX + poleRadius, poleTop);
+    glVertex2f(poleX - poleRadius, poleTop);
+
+    glEnd();
+
+    setColor(160, 164, 166);
+
+    const float ballRadius = 0.07f;
+    const int segments = 30;
+
+    glBegin(GL_TRIANGLE_FAN);
+
+    glVertex2f(poleX, poleTop);
+
+    for (int i = 0; i <= segments; ++i)
+    {
+        float angle =
+            2.0f * (float)M_PI * i / segments;
+
+        glVertex2f(
+            poleX + ballRadius * cosf(angle),
+            poleTop + ballRadius * sinf(angle)
+        );
+    }
+
+    glEnd();
+}
+
 void drawUSFlag()
 {
     float fx = -0.95f;
@@ -148,50 +191,6 @@ void drawUSFlag()
 
     glPopMatrix();
 }
-
-void drawFlagpole(float flagX, float flagY)
-{
-    float poleX = flagX - 0.08f;
-
-    float poleBottom = flagY - 1.0f;
-    float poleTop = flagY + FLAG_H + 0.15f;
-
-    float poleRadius = 0.03f;
-
-    setColor(70, 74, 77);
-
-    glBegin(GL_QUADS);
-
-    glVertex2f(poleX - poleRadius, poleBottom);
-    glVertex2f(poleX + poleRadius, poleBottom);
-    glVertex2f(poleX + poleRadius, poleTop);
-    glVertex2f(poleX - poleRadius, poleTop);
-
-    glEnd();
-
-    setColor(160, 164, 166);
-
-    const float ballRadius = 0.07f;
-    const int segments = 30;
-
-    glBegin(GL_TRIANGLE_FAN);
-
-    glVertex2f(poleX, poleTop);
-
-    for (int i = 0; i <= segments; ++i)
-    {
-        float angle =
-            2.0f * (float)M_PI * i / segments;
-
-        glVertex2f(
-            poleX + ballRadius * cosf(angle),
-            poleTop + ballRadius * sinf(angle)
-        );
-    }
-
-    glEnd();
-}
-
 void display()
 {
     glClear(GL_COLOR_BUFFER_BIT);
