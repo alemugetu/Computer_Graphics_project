@@ -32,81 +32,69 @@ void sampleBezier(std::vector<Point> &out,
     }
 }
 
-// ---------------------------------------------------------------
-// OUTER CONTOUR — full figure-eight silhouette
-// Traced from the original SVG PATH 3 (M16.4,11 ...)
-// ---------------------------------------------------------------
+
 std::vector<Point> buildOuterContour()
 {
     std::vector<Point> pts;
 
-    // M16.4,11  c-2.2,-2.9 -4.1,-4 -6.3,-4
+    
     sampleBezier(pts,
                  {16.4f, 11.0f},
                  {14.2f, 8.1f},
                  {12.3f, 7.0f},
                  {10.1f, 7.0f});
 
-    // C5.5,7 2,13.1 2,19.5
+
     sampleBezier(pts,
                  {10.1f, 7.0f},
                  {5.5f, 7.0f},
                  {2.0f, 13.1f},
                  {2.0f, 19.5f});
 
-    // c0,4 1.9,6.5 5.1,6.5
     sampleBezier(pts,
                  {2.0f, 19.5f},
                  {2.0f, 23.5f},
                  {3.9f, 26.0f},
                  {7.1f, 26.0f});
 
-    // c2.3,0 3.9,-1.1 6.9,-6.3
     sampleBezier(pts,
                  {7.1f, 26.0f},
                  {9.4f, 26.0f},
                  {11.0f, 24.9f},
                  {14.0f, 19.7f});
 
-    // c0,0 1.2,-2.2 2.1,-3.7
     sampleBezier(pts,
                  {14.0f, 19.7f},
                  {14.0f, 19.7f},
                  {15.2f, 17.5f},
                  {16.1f, 16.0f});
 
-    // c0.3,0.5 0.6,1 0.9,1.6
     sampleBezier(pts,
                  {16.1f, 16.0f},
                  {16.4f, 16.5f},
                  {16.7f, 17.0f},
                  {17.0f, 17.6f});
 
-    // l1.4,2.4
     pts.push_back({18.4f, 20.0f});
 
-    // c2.7,4.6 4.2,6.1 6.9,6.1
     sampleBezier(pts,
                  {18.4f, 20.0f},
                  {21.1f, 24.6f},
                  {22.6f, 26.1f},
                  {25.3f, 26.1f});
 
-    // c3.1,0 4.8,-2.6 4.8,-6.7
     sampleBezier(pts,
                  {25.3f, 26.1f},
                  {28.4f, 26.1f},
                  {30.1f, 23.5f},
                  {30.1f, 19.4f});
 
-    // C30,12.6 26.4,7 22.1,7
     sampleBezier(pts,
                  {30.1f, 19.4f},
                  {30.0f, 12.6f},
                  {26.4f, 7.0f},
                  {22.1f, 7.0f});
 
-    // C19.8,7 18,8.8 16.4,11  (closes back to start)
     sampleBezier(pts,
                  {22.1f, 7.0f},
                  {19.8f, 7.0f},
@@ -116,10 +104,7 @@ std::vector<Point> buildOuterContour()
     return pts;
 }
 
-// ---------------------------------------------------------------
-// LEFT INNER HOLE — oval gap inside the left loop
-// Traced from SVG PATH 1 (M5,19.5 ...) forward, closed.
-// ---------------------------------------------------------------
+
 std::vector<Point> buildLeftInnerHole()
 {
     std::vector<Point> pts;
@@ -162,56 +147,38 @@ std::vector<Point> buildLeftInnerHole()
     return pts;
 }
 
-// ---------------------------------------------------------------
-// RIGHT INNER HOLE — oval gap inside the right loop
-// Traced from SVG PATH 2 (M20.7,17.8 L19,15 ...) forward, closed.
-// Mirrors the left hole structure exactly — each segment corresponds
-// to its counterpart in buildLeftInnerHole().
-// ---------------------------------------------------------------
+
 std::vector<Point> buildRightInnerHole()
 {
     std::vector<Point> pts;
 
-    // M20.7,17.8  — entry at the crossing bridge (top of right hole)
-    // L19,15      — straight line to the bottom-left of the right loop
     pts.push_back({20.7f, 17.8f});
     pts.push_back({19.0f, 15.0f});
 
-    // c-0.4,-0.7 -0.9,-1.4 -1.3,-2
-    // curves left+down toward the inner bottom of the right loop
     sampleBezier(pts,
                  {19.0f, 15.0f},
                  {18.6f, 14.3f},
                  {18.1f, 13.6f},
                  {17.7f, 13.0f});
 
-    // c1.5,-2.3 2.7,-3.5 4.2,-3.5
-    // sweeps up-right to the top-left inner edge of the right oval
     sampleBezier(pts,
                  {17.7f, 13.0f},
                  {19.2f, 10.7f},
                  {20.4f, 9.5f},
                  {21.9f, 9.5f});
 
-    // c3,0 5.4,4.5 5.4,10.1
-    // arcs across the top and right side of the inner right oval
     sampleBezier(pts,
                  {21.9f, 9.5f},
                  {24.9f, 9.5f},
                  {27.3f, 14.0f},
                  {27.3f, 19.6f});
 
-    // c0,2.1 -0.7,3.3 -2.1,3.3
-    // curves down to the bottom-right of the inner oval
     sampleBezier(pts,
                  {27.3f, 19.6f},
                  {27.3f, 21.7f},
                  {26.6f, 22.9f},
                  {25.2f, 22.9f});
 
-    // s-2.8,-1.2 -5.4,-5.4
-    // smooth curve back up-left, closing to the entry point M20.7,17.8
-    // The reflected control point comes from the previous segment's end tangent
     sampleBezier(pts,
                  {25.2f, 22.9f},
                  {23.8f, 22.9f},
