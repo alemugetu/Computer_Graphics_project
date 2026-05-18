@@ -21,7 +21,11 @@ const float WAVE_FREQ = 2.5f;
 
 float wavePhase = 0.0f;
 
-
+inline float waveY(float x)
+{
+    float t = x / FLAG_W;
+    return WAVE_AMP * sinf(wavePhase + t * 2.f * (float)M_PI * WAVE_FREQ);
+}
 
 void setColor(int r, int g, int b)
 {
