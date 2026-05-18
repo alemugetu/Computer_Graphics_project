@@ -8,9 +8,9 @@ A collection of 2D graphics rendered using **OpenGL** and **FreeGLUT**, includin
 
 ```
 ├── meta_logo/
-│   └── meta_logo_filled.cpp       # Filled Meta infinity logo (OpenGL + stencil buffer)
+│   └── main.cpp       # Filled Meta infinity logo (OpenGL + stencil buffer)
 ├── us_flag/
-│   └── us_flag.cpp                # Animated waving US flag (OpenGL + GLUT timer)
+│   └── main.cpp                # Animated waving US flag (OpenGL + GLUT timer)
 └── README.md
 ```
 
@@ -77,7 +77,7 @@ brew install freeglut
 
 ```bash
 # Compile
-g++ meta_logo/meta_logo_filled.cpp -o meta_logo -lGL -lGLU -lglut
+g++ meta_logo/main.cpp -o meta_logo -lGL -lGLU -lglut
 
 # Run
 ./meta_logo
@@ -90,7 +90,7 @@ Meta logo's Image
 
 ```bash
 # Compile
-g++ us_flag/us_flag.cpp -o us_flag -lGL -lGLU -lglut
+g++ us_flag/main.cpp -o us_flag -lGL -lGLU -lglut
 
 # Run
 ./us_flag
