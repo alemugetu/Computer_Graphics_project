@@ -35,7 +35,7 @@ void drawStar(float x, float y, float r)
     for (int i = 0; i <= 10; ++i)
     {
         float angle = startAngle - i * (float)(M_PI / 5.0);
-
+         // Alternate outer and inner points
         float radius = (i % 2 == 0)
             ? r
             : inner;
