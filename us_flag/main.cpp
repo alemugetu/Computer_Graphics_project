@@ -298,6 +298,7 @@ int main(int argc, char **argv)
 
     glutDisplayFunc(display);
 
+       // Start timer
     glutTimerFunc(16, timer, 0);
 
     glutMainLoop();
