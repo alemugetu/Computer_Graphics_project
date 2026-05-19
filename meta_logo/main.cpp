@@ -16,7 +16,7 @@ Point drawBezier(Point p0, Point p1, Point p2, Point p3, float t) {
 
     Point p;
     
-    // Bezier formula
+    // Bezier 
     p.x = uuu * p0.x + 3 * uu * t * p1.x + 3 * u * tt * p2.x + ttt * p3.x;
     p.y = uuu * p0.y + 3 * uu * t * p1.y + 3 * u * tt * p2.y + ttt * p3.y;
     return p;
@@ -73,6 +73,7 @@ int main(int argc, char** argv) {
     glutCreateWindow("Meta Logo Render - OpenGL");
     init();
     glutDisplayFunc(display);
+      // Run program
     glutMainLoop();
     return 0;
 }
